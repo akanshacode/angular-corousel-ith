@@ -85,4 +85,16 @@
     right: 10px;
   }
 
-  
+  .center-focused .slide {
+  filter: blur(4px); /* Blur all cards */
+}
+
+.center-focused .slide:nth-child(2) {
+  filter: none; 
+  transform: scale(1.2); 
+}
+
+
+#centerFocus{
+  cursor: pointer;
+}

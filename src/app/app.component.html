@@ -8,18 +8,29 @@
       <option [value]="4">4</option>
     </select>
   </div>
+  <div class="text-center">
+    <label for="centerFocus">Center Focus: </label>
+    <input type="checkbox" id="centerFocus" [checked]="centerFocused" [(ngModel)]="centerFocused" (change)="toggleCenterFocus($event)" />
+  </div>
+  
 <div class="carousel">
     <button (click)="prevSlide()" class="arrow-left" [disabled]="currentSlide === 1"><</button>
-    <div class="slide-container">
-        <div class="slide" *ngFor="let item of getArray(); let i = index" >
-         <h4>{{ item?.title }}</h4> <br />
-         <span><img style="width: 300px; height: 300px;" [src]="item?.image" alt="img"></span><br />
-           <p>
-            {{ item?.description }}
-           </p> 
-          </div>
-          
+ 
+    <div class="slide-container" [ngClass]="{
+      'center-focused': centerFocused && noOfCards!==1,
+      'center-focused-two-cards': noOfCards === 2 && centerFocused,
+      'center-focused-three-cards': noOfCards === 3 && centerFocused,
+      'center-focused-four-cards': noOfCards === 4 && centerFocused
+    }">
+      <div class="slide" *ngFor="let item of getArray(); let i = index">
+        <h4>{{ item?.title }}</h4> <br />
+        <span><img style="width: 300px; height: 300px;" [src]="item?.image" alt="img"></span><br />
+        <p>{{ item?.description }}</p>
+      </div>
     </div>
+    
+    
+
     <button (click)="nextSlide()" class="arrow-right" [disabled]="(currentSlide-1) >= items.length - noOfCards">></button>
   </div>
   
