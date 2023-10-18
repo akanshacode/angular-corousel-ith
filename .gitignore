@@ -5,7 +5,7 @@
 
 # Node artifact files
 node_modules/
-angular/cache/ 
+.angular/cache/ 
 dist/
 
 # Compiled Java class files
