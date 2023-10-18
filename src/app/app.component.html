@@ -1,0 +1,27 @@
+<h1 class="text-center">Angular Carousel</h1>
+<div class="dropdown text-center">
+    <label for="noOfCards">Number of Cards: </label>
+    <select id="noOfCards" [(ngModel)]="noOfCards" (change)="changeDropDown()">
+      <option [value]="1">1</option>
+      <option [value]="2">2</option>
+      <option [value]="3">3</option>
+      <option [value]="4">4</option>
+    </select>
+  </div>
+<div class="carousel">
+    <button (click)="prevSlide()" class="arrow-left" [disabled]="currentSlide === 1"><</button>
+    <div class="slide-container">
+        <div class="slide" *ngFor="let item of getArray(); let i = index" >
+         <h4>{{ item?.title }}</h4> <br />
+         <span><img style="width: 300px; height: 300px;" [src]="item?.image" alt="img"></span><br />
+           <p>
+            {{ item?.description }}
+           </p> 
+          </div>
+          
+    </div>
+    <button (click)="nextSlide()" class="arrow-right" [disabled]="(currentSlide-1) >= items.length - noOfCards">></button>
+  </div>
+  
+
+ 

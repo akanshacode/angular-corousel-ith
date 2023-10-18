@@ -1,0 +1,88 @@
+
+.text-center {
+    text-align: center;
+  }
+  
+  .carousel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .slide-container {
+
+    width: 100%; 
+    /* max-width: 800px;  */
+    justify-content: center; 
+    align-items: center;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: center;
+    height: 100vh;
+    justify-content: center;
+  }
+  
+  .slide {
+    /* flex: 0 0 calc(100% / var(--noOfCards, 3));  */
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    flex-shrink: 0;
+    margin: 0 10px;
+    opacity: .7;
+    padding: 20px;
+    text-align: center;
+    -webkit-transform: scale(.8);
+    transform: scale(.8);
+    transition: opacity .3s ease-in-out,-webkit-transform .3s ease-in-out,-webkit-filter .3s ease-in-out;
+    transition: transform .3s ease-in-out,opacity .3s ease-in-out,filter .3s ease-in-out;
+    transition: transform .3s ease-in-out,opacity .3s ease-in-out,filter .3s ease-in-out,-webkit-transform .3s ease-in-out,-webkit-filter .3s ease-in-out;
+  }
+  h1{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+  .arrow-left{
+    background-color: hsla(0,0%,100%,.7);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #333;
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 0 10px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 2;
+    left: 10px;
+  }
+  .arrow-right{
+    background-color: hsla(0,0%,100%,.7);
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    color: #333;
+    cursor: pointer;
+    font-size: 2rem;
+    margin: 0 10px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 2;
+    right: 10px;
+  }
+
+  
