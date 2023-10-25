@@ -14,7 +14,7 @@
   </div>
   
 <div class="carousel">
-    <button (click)="prevSlide()" class="arrow-left" [disabled]="currentSlide<1" ><</button>
+    <button (click)="prevSlide()" class="arrow-left" [disabled]="getArray()?.length!==1 && currentSlide<1" ><</button>
  
     <div class="slide-container" [ngClass]="{
       'center-focused': centerFocused && getArray()?.length!==1,
@@ -31,7 +31,7 @@
     
     
 
-    <button (click)="nextSlide()" class="arrow-right"  [disabled]="currentSlide+1>=items?.length">></button>
+    <button (click)="nextSlide()" class="arrow-right"  [disabled]="getArray()?.length!==1 &&currentSlide+1>=items?.length">></button>
   </div>
   
 
