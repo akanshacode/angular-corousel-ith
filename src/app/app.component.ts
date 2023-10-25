@@ -7,71 +7,213 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   centerFocused = false;
-
+  centeredArray: any = []
+  // items = [
+  //  {
+  //   image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+  //   title:'Title 1',
+  //   description:'Description 1'
+  //  },
+  //  {
+  //   image:'https://images.unsplash.com/photo-1633643092028-b66187af7d47?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8fA%3D%3D&w=500',
+  //   title:'Title 2',
+  //   description:'Description 2'
+  //  },
+  //  {
+  //   image:'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjR8fHxlbnwwfHx8fHw%3D&w=500',
+  //   title:'Title 3',
+  //   description:'Description 3'
+  //  },
+  //  {
+  //   image:'https://images.unsplash.com/photo-1668090956134-7eb5fc42733c?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjh8fHxlbnwwfHx8fHw%3D&w=500',
+  //   title:'Title 4',
+  //   description:'Description 4'
+  //  },
+  //  {
+  //   image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+  //   title:'Title 5',
+  //   description:'Description 5'
+  //  }
+  // ];
   items = [
-   {
-    image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-    title:'Title 1',
-    description:'Description 1'
-   },
-   {
-    image:'https://images.unsplash.com/photo-1633643092028-b66187af7d47?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8fA%3D%3D&w=500',
-    title:'Title 2',
-    description:'Description 2'
-   },
-   {
-    image:'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjR8fHxlbnwwfHx8fHw%3D&w=500',
-    title:'Title 3',
-    description:'Description 3'
-   },
-   {
-    image:'https://images.unsplash.com/photo-1668090956134-7eb5fc42733c?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjh8fHxlbnwwfHx8fHw%3D&w=500',
-    title:'Title 4',
-    description:'Description 4'
-   },
-   {
-    image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-    title:'Title 5',
-    description:'Description 5'
-   }
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 1',
+      description: 'Description 1',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1633643092028-b66187af7d47?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8fA%3D%3D&w=500',
+      title: 'Title 2',
+      description: 'Description 2',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjR8fHxlbnwwfHx8fHw%3D&w=500',
+      title: 'Title 3',
+      description: 'Description 3',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1668090956134-7eb5fc42733c?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjh8fHxlbnwwfHx8fHw%3D&w=500',
+      title: 'Title 4',
+      description: 'Description 4',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1pYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 5',
+      description: 'Description 5',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 6',
+      description: 'Description 6',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 7',
+      description: 'Description 7',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 8',
+      description: 'Description 8',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 9',
+      description: 'Description 9',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 10',
+      description: 'Description 10',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 11',
+      description: 'Description 11',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 12',
+      description: 'Description 12',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 13',
+      description: 'Description 13',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 14',
+      description: 'Description 14',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 15',
+      description: 'Description 15',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 16',
+      description: 'Description 16',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 17',
+      description: 'Description 17',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 18',
+      description: 'Description 18',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 19',
+      description: 'Description 19',
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
+      title: 'Title 20',
+      description: 'Description 20',
+    },
   ];
-  currentSlide: number = 1;
-  noOfCards: number = 1; // Number of cards to display in the middle
 
-  prevSlide() {
-    this.currentSlide -= Number(this.noOfCards);
-    if (this.currentSlide < 1) {
-      this.currentSlide = 1;
+  currentSlide: number = 1;
+  noOfCards: number = 1;
+
+
+  getArray() {
+    if ((!this.centerFocused) || Number(this.noOfCards) === 1) {
+
+      return this.items.slice(Number(this.currentSlide) - 1, Number(this.currentSlide) - 1 + Number(this.noOfCards));
+
+    } else {
+
+      return this.centeredArray;
     }
   }
 
-  getArray(){
-    return this.items.slice(Number(this.currentSlide)-1, Number(this.currentSlide)-1 + Number(this.noOfCards))
+
+  prevSlide() {
+    if ((!this.centerFocused) || Number(this.noOfCards) === 1) {
+
+      this.currentSlide -= Number(this.noOfCards);
+      if (this.currentSlide < 1) {
+        this.currentSlide = 1;
+      }
+    } else {
+      if (Number(this.noOfCards) === 2) {
+        console.log(this.currentSlide)
+        let len = this.centeredArray?.length;
+        this.centeredArray.length = 1
+        this.centeredArray.push(this.items[this.currentSlide - len])
+        this.centeredArray.reverse()
+        this.currentSlide--
+
+      }
+    }
   }
-  
-  // nextSlide() {
-  //   console.log(this.currentSlide)
-  //   console.log(Number(this.noOfCards))
-  //   this.currentSlide = Number(this.currentSlide)+Number(this.noOfCards);
-  //   console.log(this.currentSlide,Number(this.noOfCards))
-   
-  // }
+
   nextSlide() {
-    const maxPossibleSlide = this.items.length - Number(this.noOfCards) + 1;
-  
-    this.currentSlide = Number(this.currentSlide) + Number(this.noOfCards);
-  
-    if (this.currentSlide > maxPossibleSlide) {
-      this.currentSlide = maxPossibleSlide;
+    console.log(this.noOfCards)
+    if ((!this.centerFocused) || Number(this.noOfCards) == 1) {
+      console.log('jbnwdqwk')
+      const maxPossibleSlide = this.items.length - Number(this.noOfCards) + 1;
+      this.currentSlide = Number(this.currentSlide) + Number(this.noOfCards);
+      if (this.currentSlide > maxPossibleSlide) {
+        this.currentSlide = maxPossibleSlide;
+      }
+    } else {
+      console.log('jwoowpe')
+      if (Number(this.noOfCards) === 2) {
+        let len = this.centeredArray?.length;
+        this.centeredArray.reverse()
+        this.centeredArray.pop()
+        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
+        this.currentSlide++;
+      }
     }
   }
 
   toggleCenterFocus(e) {
     this.centerFocused = e.target.checked;
+    this.currentSlide = 1;
+    if (this.centerFocused && Number(this.noOfCards) !== 1) {
+
+      this.centeredArray = []
+      this.centeredArray = this.items?.slice(0, Number(this.noOfCards))
+    }
+
   }
 
   changeDropDown() {
     this.currentSlide = 1;
+    if (this.centerFocused && Number(this.noOfCards) !== 1) {
+
+      this.centeredArray = []
+      this.centeredArray = this.items?.slice(0, Number(this.noOfCards))
+    }
+
   }
-  
+
 }

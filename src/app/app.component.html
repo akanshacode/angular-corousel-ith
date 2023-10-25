@@ -14,10 +14,10 @@
   </div>
   
 <div class="carousel">
-    <button (click)="prevSlide()" class="arrow-left" [disabled]="currentSlide === 1"><</button>
+    <button (click)="prevSlide()" class="arrow-left" [disabled]="currentSlide === 0"><</button>
  
     <div class="slide-container" [ngClass]="{
-      'center-focused': centerFocused && noOfCards!==1,
+      'center-focused': centerFocused && getArray()?.length!==1,
       'center-focused-two-cards': noOfCards === 2 && centerFocused,
       'center-focused-three-cards': noOfCards === 3 && centerFocused,
       'center-focused-four-cards': noOfCards === 4 && centerFocused
