@@ -85,57 +85,7 @@ export class AppComponent {
       image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
       title: 'Title 10',
       description: 'Description 10',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 11',
-      description: 'Description 11',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 12',
-      description: 'Description 12',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 13',
-      description: 'Description 13',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 14',
-      description: 'Description 14',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 15',
-      description: 'Description 15',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 16',
-      description: 'Description 16',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 17',
-      description: 'Description 17',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 18',
-      description: 'Description 18',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 19',
-      description: 'Description 19',
-    },
-    {
-      image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-      title: 'Title 20',
-      description: 'Description 20',
-    },
+    }
   ];
 
   currentSlide: number = 1;
@@ -155,6 +105,7 @@ export class AppComponent {
 
 
   prevSlide() {
+    console.log(this.currentSlide)
     if ((!this.centerFocused) || Number(this.noOfCards) === 1) {
 
       this.currentSlide -= Number(this.noOfCards);
@@ -170,6 +121,18 @@ export class AppComponent {
         this.centeredArray.reverse()
         this.currentSlide--
 
+      }else if(Number(this.noOfCards) === 3){
+        let len = this.centeredArray?.length;
+        this.centeredArray.length = 2
+        this.centeredArray.unshift(this.items[this.currentSlide - len])
+        this.currentSlide--
+      }else if(Number(this.noOfCards) === 4){
+        let len = this.centeredArray?.length;
+        this.centeredArray.length = 3
+        this.centeredArray.unshift(this.items[this.currentSlide - len+2])
+        this.currentSlide--
+      }else{
+        return;
       }
     }
   }
@@ -177,20 +140,32 @@ export class AppComponent {
   nextSlide() {
     console.log(this.noOfCards)
     if ((!this.centerFocused) || Number(this.noOfCards) == 1) {
-      console.log('jbnwdqwk')
       const maxPossibleSlide = this.items.length - Number(this.noOfCards) + 1;
       this.currentSlide = Number(this.currentSlide) + Number(this.noOfCards);
       if (this.currentSlide > maxPossibleSlide) {
         this.currentSlide = maxPossibleSlide;
       }
     } else {
-      console.log('jwoowpe')
       if (Number(this.noOfCards) === 2) {
         let len = this.centeredArray?.length;
         this.centeredArray.reverse()
         this.centeredArray.pop()
         this.centeredArray.push(this.items[len - 1 + this.currentSlide])
         this.currentSlide++;
+      }else if (Number(this.noOfCards) === 3){
+        let len = this.centeredArray?.length;
+        this.centeredArray?.shift()
+        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
+        this.currentSlide++
+      }
+      else if (Number(this.noOfCards) === 4){
+        let len = this.centeredArray?.length;
+        this.centeredArray?.shift()
+        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
+        console.log(this.centeredArray,'--------------')
+        this.currentSlide++
+      }else{
+        return;
       }
     }
   }
