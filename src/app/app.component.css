@@ -89,12 +89,38 @@
   filter: blur(4px); /* Blur all cards */
 }
 
-.center-focused .slide:nth-child(2) {
+.center-focused .slide:nth-child(1) {
+  filter: none; 
+  transform: scale(1.2); 
+}
+  .center-focused-three .slide {
+  filter: blur(4px); /* Blur all cards */
+}
+
+.center-focused-three .slide:nth-child(2) {
+  filter: none; 
+  transform: scale(1.2); 
+}
+  .center-focused-four .slide {
+  filter: blur(4px); /* Blur all cards */
+}
+/* 
+.center-focused-four .slide:nth-child(2) {
+  filter: none; 
+  transform: scale(1.2); 
+} */
+
+.center-focused-four .slide:nth-child(3) {
   filter: none; 
   transform: scale(1.2); 
 }
 
+.center-focused-three-cards .slide:nth-child(2){
+  filter: none; 
+  transform: scale(1.2); 
+}
 
 #centerFocus{
   cursor: pointer;
 }
+

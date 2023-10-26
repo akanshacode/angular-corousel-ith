@@ -13,14 +13,11 @@
     <input type="checkbox" id="centerFocus" [checked]="centerFocused" [(ngModel)]="centerFocused" (change)="toggleCenterFocus($event)" />
   </div>
   
-<div class="carousel">
-    <button (click)="prevSlide()" class="arrow-left" [disabled]="getArray()?.length!==1 && currentSlide<1" ><</button>
+<div class="carousel" *ngIf="getArray()?.length===1||getArray()?.length===2">
+    <button (click)="prevSlide()" class="arrow-left" [disabled]="getArray()?.length!==1 && currentSlide<=1" ><</button>
  
     <div class="slide-container" [ngClass]="{
-      'center-focused': centerFocused && getArray()?.length!==1,
-      'center-focused-two-cards': noOfCards === 2 && centerFocused,
-      'center-focused-three-cards': noOfCards === 3 && centerFocused,
-      'center-focused-four-cards': noOfCards === 4 && centerFocused
+      'center-focused': centerFocused 
     }">
       <div class="slide" *ngFor="let item of getArray(); let i = index">
         <h4>{{ item?.title }}</h4> <br />
@@ -31,7 +28,43 @@
     
     
 
-    <button (click)="nextSlide()" class="arrow-right"  [disabled]="getArray()?.length!==1 &&currentSlide+1>=items?.length">></button>
+    <button (click)="nextSlide()" class="arrow-right"  [disabled]="getArray()?.length!==1 &&currentSlide>=items?.length">></button>
+  </div>
+  
+<div class="carousel" *ngIf="getArray()?.length===3">
+    <button (click)="prevSlide()" class="arrow-left"  ><</button>
+ 
+    <div class="slide-container" [ngClass]="{
+      'center-focused-three': centerFocused 
+    }">
+      <div class="slide" *ngFor="let item of getArray(); let i = index">
+        <h4>{{ item?.title }}</h4> <br />
+        <span><img style="width: 300px; height: 300px;" [src]="item?.image" alt="img"></span><br />
+        <p>{{ item?.description }}</p>
+      </div>
+    </div>
+    <button (click)="nextSlide()" class="arrow-right"  >></button>
+    
+    
+
+  </div>
+  
+<div class="carousel" *ngIf="getArray()?.length===4">
+    <button (click)="prevSlide()" class="arrow-left"  ><</button>
+ 
+    <div class="slide-container" [ngClass]="{
+      'center-focused-four': centerFocused 
+    }">
+      <div class="slide" *ngFor="let item of getArray(); let i = index">
+        <h4>{{ item?.title }}</h4> <br />
+        <span><img style="width: 300px; height: 300px;" [src]="item?.image" alt="img"></span><br />
+        <p>{{ item?.description }}</p>
+      </div>
+    </div>
+    
+    
+
+    <button (click)="nextSlide()" class="arrow-right"  >></button>
   </div>
   
 

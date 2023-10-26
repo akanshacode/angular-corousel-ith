@@ -8,33 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   centerFocused = false;
   centeredArray: any = []
-  // items = [
-  //  {
-  //   image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-  //   title:'Title 1',
-  //   description:'Description 1'
-  //  },
-  //  {
-  //   image:'https://images.unsplash.com/photo-1633643092028-b66187af7d47?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8OXx8fGVufDB8fHx8fA%3D%3D&w=500',
-  //   title:'Title 2',
-  //   description:'Description 2'
-  //  },
-  //  {
-  //   image:'https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjR8fHxlbnwwfHx8fHw%3D&w=500',
-  //   title:'Title 3',
-  //   description:'Description 3'
-  //  },
-  //  {
-  //   image:'https://images.unsplash.com/photo-1668090956134-7eb5fc42733c?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjh8fHxlbnwwfHx8fHw%3D&w=500',
-  //   title:'Title 4',
-  //   description:'Description 4'
-  //  },
-  //  {
-  //   image:'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
-  //   title:'Title 5',
-  //   description:'Description 5'
-  //  }
-  // ];
+  
   items = [
     {
       image: 'https://images.unsplash.com/photo-1648457257285-cfbc3781cc54?auto=format&fit=crop&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&w=1935',
@@ -121,20 +95,18 @@ export class AppComponent {
         this.centeredArray.reverse()
         this.currentSlide--
 
-      }else if(Number(this.noOfCards) === 3){
+      } else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
+        this.currentSlide--;
+        if (this.currentSlide < 1) {
+          this.currentSlide = this.items.length - Number(this.noOfCards) + 1;
+        }
+    
         let len = this.centeredArray?.length;
-        this.centeredArray.length = 2
-        this.centeredArray.unshift(this.items[this.currentSlide - len])
-        this.currentSlide--
-      }else if(Number(this.noOfCards) === 4){
-        let len = this.centeredArray?.length;
-        this.centeredArray.length = 3
-        this.centeredArray.unshift(this.items[this.currentSlide - len+2])
-        this.currentSlide--
-      }else{
+        this.centeredArray.shift();
+        this.centeredArray.push(this.items[this.currentSlide + len - 1]);
+      } else {
         return;
-      }
-    }
+      }}
   }
 
   nextSlide() {
@@ -150,24 +122,28 @@ export class AppComponent {
         let len = this.centeredArray?.length;
         this.centeredArray.reverse()
         this.centeredArray.pop()
-        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
+        if(this.items[len - 1 + this.currentSlide]){
+
+          this.centeredArray.push(this.items[len - 1 + this.currentSlide])
+        }else{
+          this.centeredArray.push(this.items[0])
+
+        }
         this.currentSlide++;
-      }else if (Number(this.noOfCards) === 3){
+      }  else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
+        this.currentSlide++;
+        if (this.currentSlide > this.items.length - Number(this.noOfCards) + 1) {
+          this.currentSlide = 1;
+        }
+    
         let len = this.centeredArray?.length;
-        this.centeredArray?.shift()
-        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
-        this.currentSlide++
-      }
-      else if (Number(this.noOfCards) === 4){
-        let len = this.centeredArray?.length;
-        this.centeredArray?.shift()
-        this.centeredArray.push(this.items[len - 1 + this.currentSlide])
-        console.log(this.centeredArray,'--------------')
-        this.currentSlide++
-      }else{
+        this.centeredArray = this.items.slice(this.currentSlide - 1, this.currentSlide - 1 + len);
+        console.log(this.centeredArray)
+      } else {
         return;
       }
-    }
+      
+    } 
   }
 
   toggleCenterFocus(e) {
