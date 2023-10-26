@@ -95,19 +95,28 @@ export class AppComponent {
         this.centeredArray.reverse()
         this.currentSlide--
 
-      } else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
+      }  else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
         this.currentSlide--;
         if (this.currentSlide < 1) {
-          this.currentSlide = this.items.length - Number(this.noOfCards) + 1;
+          this.currentSlide = this.items.length;
         }
     
         let len = this.centeredArray?.length;
-        this.centeredArray.shift();
-        this.centeredArray.push(this.items[this.currentSlide + len - 1]);
+        this.centeredArray.pop();
+        if (this.currentSlide - len - 1 >= 0) {
+          this.centeredArray.unshift(this.items[this.currentSlide  - 1]);
+        } else {
+          this.centeredArray.unshift(this.items[this.currentSlide  - 1]);
+        }
+        console.log(this.centeredArray)
+        console.log(this.currentSlide)
       } else {
         return;
-      }}
-  }
+      }
+    }}
+
+
+
 
   nextSlide() {
     console.log(this.noOfCards)
