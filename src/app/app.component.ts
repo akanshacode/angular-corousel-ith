@@ -139,16 +139,21 @@ export class AppComponent {
 
         }
         this.currentSlide++;
-      }  else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
+      } else if (Number(this.noOfCards) === 3 || Number(this.noOfCards) === 4) {
         this.currentSlide++;
-        if (this.currentSlide > this.items.length - Number(this.noOfCards) + 1) {
+        if (this.currentSlide > this.items.length) {
           this.currentSlide = 1;
         }
-    
+      
         let len = this.centeredArray?.length;
-        this.centeredArray = this.items.slice(this.currentSlide - 1, this.currentSlide - 1 + len);
-        console.log(this.centeredArray)
-      } else {
+        this.centeredArray.shift();
+        if (this.currentSlide + len - 1 <= this.items.length) {
+          this.centeredArray.push(this.items[this.currentSlide + len - 2]);
+        } else {
+          this.centeredArray.push(this.items[this.currentSlide + len - 2 - this.items.length]);
+        }
+        console.log(this.centeredArray,this.currentSlide)
+      }else {
         return;
       }
       
